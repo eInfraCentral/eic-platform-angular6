@@ -8,6 +8,7 @@ import {CanActivateViaAuthGuard} from '../../../../src/app/services/can-activate
 import {ServiceUploadExtendedComponent} from './pages/catrisService/service-upload-extended.component';
 import {ServiceEditExtendedComponent} from './pages/catrisService/service-edit-extended.component';
 import {AddFistServiceExtendedComponent} from './pages/catrisService/add-fist-service-extended.component';
+import {DevelopersExtendedComponent} from './pages/support/developers-extened.component';
 import {BrowseSubcategoriesComponent} from './pages/browseSubcategories/browse-subcategories.component';
 
 const routes: Routes = [
@@ -90,6 +91,10 @@ const routes: Routes = [
     data: {
       breadcrumb: 'Browse Subcategories'
     }
+  },
+  {
+    path: 'developers',
+    component: DevelopersExtendedComponent
   },
   {
     path: 'support',

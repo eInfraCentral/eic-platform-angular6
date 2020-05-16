@@ -11,13 +11,15 @@ import {environment} from '../../../../environments/environment';
 })
 export class DevelopersComponent implements OnInit {
     public project = environment.projectName;
+    externalReference = 'https://docs.google.com/forms/d/1WOQDx2wRZRiw9jlA8l1A54tMki8FwUV8fs9iXO_kcmg';
 
 
-    constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         this.route.fragment.subscribe(fragment => this.scrollTo('#' + fragment));
+        document.getElementById('contactLink').setAttribute ('href', this.externalReference);
     }
 
     scrollTo(selector: string) {

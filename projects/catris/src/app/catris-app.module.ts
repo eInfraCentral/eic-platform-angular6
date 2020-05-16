@@ -21,6 +21,7 @@ import {CompareServicesExtendedComponent} from './pages/compare/compare-services
 import {ServiceUploadExtendedComponent} from './pages/catrisService/service-upload-extended.component';
 import {CKEditorModule} from 'ng2-ckeditor';
 import {ServiceEditExtendedComponent} from './pages/catrisService/service-edit-extended.component';
+import {DevelopersExtendedComponent} from './pages/support/developers-extened.component';
 import {AccordionSectionCatrisComponent} from './pages/catrisService/accordion-section-catris.component';
 import {AddFistServiceExtendedComponent} from './pages/catrisService/add-fist-service-extended.component';
 import {BrowseSubcategoriesComponent} from './pages/browseSubcategories/browse-subcategories.component';
@@ -41,7 +42,8 @@ import {CommonModule} from '@angular/common';
     ServiceUploadExtendedComponent,
     ServiceEditExtendedComponent,
     AddFistServiceExtendedComponent,
-    BrowseSubcategoriesComponent
+    BrowseSubcategoriesComponent,
+    DevelopersExtendedComponent
   ],
   imports: [
     CommonModule,
