@@ -33,9 +33,9 @@ export class ProviderStatsComponent implements OnInit {
   public WW: string[];
 
   providerVisitsOptions: any = null;
-  providerRatingsOptions: any = null;
+  // providerRatingsOptions: any = null;
   providerFavouritesOptions: any = null;
-  providerVisitationPercentageOptions: any = null;
+  // providerVisitationPercentageOptions: any = null;
   providerMapOptions: any = null;
   mapDistributionOfServicesOptions: any = null;
   categoriesPerServiceForProvider: any = null;
@@ -142,18 +142,18 @@ export class ProviderStatsComponent implements OnInit {
       }
     );
 
-    this.resourceService.getRatingsForProvider(this.providerId, period).pipe(
-      map(data => {
-        // THESE 3 weird lines should be deleted when pgl makes everything ok :)
-        return Object.entries(data).map((d) => {
-          return [new Date(d[0]).getTime(), d[1]];
-        }).sort((l, r) => l[0] - r[0]);
-      })).subscribe(
-      data => this.setRatingsForProvider(data),
-      err => {
-        this.errorMessage = 'An error occurred while retrieving ratings for this provider. ' + err.error;
-      }
-    );
+    // this.resourceService.getRatingsForProvider(this.providerId, period).pipe(
+    //   map(data => {
+    //     // THESE 3 weird lines should be deleted when pgl makes everything ok :)
+    //     return Object.entries(data).map((d) => {
+    //       return [new Date(d[0]).getTime(), d[1]];
+    //     }).sort((l, r) => l[0] - r[0]);
+    //   })).subscribe(
+    //   data => this.setRatingsForProvider(data),
+    //   err => {
+    //     this.errorMessage = 'An error occurred while retrieving ratings for this provider. ' + err.error;
+    //   }
+    // );
 
     /* bar charts */
     this.resourceService.getCategoriesPerServiceForProvider(this.providerId).subscribe(
@@ -258,23 +258,23 @@ export class ProviderStatsComponent implements OnInit {
       }
     );
 
-    if (dontGetServices) {
-    } else {
-      this.resourceService.getVisitationPercentageForProvider(this.providerId).pipe(
-        map(data => {
-          // THESE 3 weird lines should be deleted when pgl makes everything ok :)
-          return Object.entries(data).map((d) => {
-            if (d[1] !== 'NaN') {
-              return {name: d[0], y: d[1]};
-            }
-          });
-        })).subscribe(
-          data => this.setVisitationsForProvider(data),
-          err => {
-            this.errorMessage = 'An error occurred while retrieving service visitation percentages for this provider. ' + err.error;
-          }
-        );
-    }
+    // if (dontGetServices) {
+    // } else {
+    //   this.resourceService.getVisitationPercentageForProvider(this.providerId).pipe(
+    //     map(data => {
+    //       // THESE 3 weird lines should be deleted when pgl makes everything ok :)
+    //       return Object.entries(data).map((d) => {
+    //         if (d[1] !== 'NaN') {
+    //           return {name: d[0], y: d[1]};
+    //         }
+    //       });
+    //     })).subscribe(
+    //       data => this.setVisitationsForProvider(data),
+    //       err => {
+    //         this.errorMessage = 'An error occurred while retrieving service visitation percentages for this provider. ' + err.error;
+    //       }
+    //     );
+    // }
 
     this.resourceService.getMapDistributionOfServices(this.providerId).subscribe(
       data => {
@@ -377,74 +377,74 @@ export class ProviderStatsComponent implements OnInit {
     }
   }
 
-  setRatingsForProvider(data: any) {
-    if (data) {
-      this.providerRatingsOptions = {
-        chart: {
-          height: (3 / 4 * 100) + '%', // 3:4 ratio
-        },
-        title: {
-          text: ''
-        },
-        xAxis: {
-          type: 'datetime',
-          dateTimeLabelFormats: { // don't display the dummy year
-            month: '%e. %b',
-            year: '%b'
-          },
-          title: {
-            text: 'Date'
-          }
-        },
-        yAxis: {
-          title: {
-            text: 'Average rating'
-          }
-        },
-        series: [{
-          name: 'Average ratings over time',
-          color: '#013203',
-          data: data
-        }]
-      };
-    }
-  }
+  // setRatingsForProvider(data: any) {
+  //   if (data) {
+  //     this.providerRatingsOptions = {
+  //       chart: {
+  //         height: (3 / 4 * 100) + '%', // 3:4 ratio
+  //       },
+  //       title: {
+  //         text: ''
+  //       },
+  //       xAxis: {
+  //         type: 'datetime',
+  //         dateTimeLabelFormats: { // don't display the dummy year
+  //           month: '%e. %b',
+  //           year: '%b'
+  //         },
+  //         title: {
+  //           text: 'Date'
+  //         }
+  //       },
+  //       yAxis: {
+  //         title: {
+  //           text: 'Average rating'
+  //         }
+  //       },
+  //       series: [{
+  //         name: 'Average ratings over time',
+  //         color: '#013203',
+  //         data: data
+  //       }]
+  //     };
+  //   }
+  // }
 
-  setVisitationsForProvider(data: any) {
-    if (data) {
-      this.providerVisitationPercentageOptions = {
-        chart: {
-          height: (3 / 4 * 100) + '%', // 3:4 ratio
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false,
-          type: 'pie'
-        },
-        title: {
-          text: ''
-        },
-        // xAxis: {
-        //     type: 'datetime',
-        //     dateTimeLabelFormats: { // don't display the dummy year
-        //         month: '%e. %b',
-        //         year: '%b'
-        //     },
-        //     title: {
-        //         text: 'Date'
-        //     }
-        // },
-        // yAxis: {
-        //     title: {
-        //         text: 'Number of visits'
-        //     }
-        // },
-        series: [{
-          name: 'Services\' visitation percentage',
-          data: data
-        }]
-      };
-    }
-  }
+  // setVisitationsForProvider(data: any) {
+  //   if (data) {
+  //     this.providerVisitationPercentageOptions = {
+  //       chart: {
+  //         height: (3 / 4 * 100) + '%', // 3:4 ratio
+  //         plotBackgroundColor: null,
+  //         plotBorderWidth: null,
+  //         plotShadow: false,
+  //         type: 'pie'
+  //       },
+  //       title: {
+  //         text: ''
+  //       },
+  //       // xAxis: {
+  //       //     type: 'datetime',
+  //       //     dateTimeLabelFormats: { // don't display the dummy year
+  //       //         month: '%e. %b',
+  //       //         year: '%b'
+  //       //     },
+  //       //     title: {
+  //       //         text: 'Date'
+  //       //     }
+  //       // },
+  //       // yAxis: {
+  //       //     title: {
+  //       //         text: 'Number of visits'
+  //       //     }
+  //       // },
+  //       series: [{
+  //         name: 'Services\' visitation percentage',
+  //         data: data
+  //       }]
+  //     };
+  //   }
+  // }
 
   setCountriesForProvider(data: any) {
     const places = this.resourceService.expandRegion(JSON.parse(JSON.stringify(data || [])), this.EU, this.WW);
