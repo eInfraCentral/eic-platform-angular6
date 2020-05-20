@@ -61,7 +61,6 @@
                     <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[5]}" href="#">Contact *</a></li>
                     <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[6]}" href="#">Other </a></li>
                     <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[7]}" href="#">Aggregator </a></li>
-                    <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[8]}" href="#">Indicators </a></li>
                   </ul>
 
                   <form [formGroup]="serviceForm" role="form" class="uk-form-horizontal uk-margin"
@@ -1277,7 +1276,7 @@
                           </div>
                         </div>
                       </li>
-                      <li>
+                      <!--<li>
 
                         <form class="uk-form-horizontal uk-margin-small-bottom" [formGroup]="measurementForm">
                           <div formArrayName="measurements">
@@ -1300,7 +1299,7 @@
                                     <select class="uk-select" id="indicatorId"
                                             (change)="onIndicatorSelect($event, i)" formControlName="indicatorId"
                                             [ngClass]="{'uk-form-danger': !measurements.controls[i].get('indicatorId').valid && measurements.controls[i].get('indicatorId').dirty}">
-                                      <option value="" selected>--select indicator--</option>
+                                      <option value="" selected>&#45;&#45;select indicator&#45;&#45;</option>
                                       <ng-container *ngIf="indicators">
                                         <option *ngFor="let indicator of indicators.results"
                                                 title="{{indicator.description}}"
@@ -1320,7 +1319,7 @@
                                         <select id="location" class="uk-select uk-width-5-6 uk-animation-slide-top-small" [formControlName]="locIndex"
                                                 [ngClass]="{'uk-form-danger': !locations(i).get([locIndex]).valid && locations(i).get([locIndex]).dirty}">
                                           <ng-container *ngIf="placesVocabulary">
-                                            <option>--Choose location--</option>
+                                            <option>&#45;&#45;Choose location&#45;&#45;</option>
                                             <option *ngFor="let placeEntry of placesVocabulary" value="{{placeEntry.id}}">
                                               {{placeEntry.name}}
                                             </option>
@@ -1397,8 +1396,8 @@
                             </div>
                           </div>
                         </form>
-<!--                        <pre>{{measurementForm.value | json}}</pre>-->
-                      </li>
+&lt;!&ndash;                        <pre>{{measurementForm.value | json}}</pre>&ndash;&gt;
+                      </li>-->
                     </ul>
 
                     <button type="submit" class="btn btn-primary butn theme block full-width m-b">
