@@ -48,7 +48,7 @@
 
                   <div class="uk-float-right uk-padding">
                     <button class="uk-button" type="button" title="Open or download an empty pdf template form"
-                            (click)="downloadServiceFormPDF()">Download to pdf
+                            (click)="downloadServiceFormPDF()">Download empty form to pdf
                     </button>
                   </div>
 
@@ -61,7 +61,6 @@
                     <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[5]}" href="#">Contact *</a></li>
                     <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[6]}" href="#">Other </a></li>
                     <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[7]}" href="#">Aggregator </a></li>
-                    <li><a class="remove-text-decoration" [ngClass]="{'form-error': tabs[8]}" href="#">Indicators </a></li>
                   </ul>
 
                   <form [formGroup]="serviceForm" role="form" class="uk-form-horizontal uk-margin"
@@ -267,20 +266,20 @@
                                           </a>
                                         </div>
                                         <label class="uk-form-label uk-text-right" for="firstName">
-                                          {{ j === 0 ? (firstContactFirstNameDesc.label + (firstContactFirstNameDesc.mandatory ? ' (*)' : '')) : (secondContactLastNameDesc.label + (secondContactLastNameDesc.mandatory ? ' (*)' : ''))}}
+                                          {{ j === 0 ? (firstContactFirstNameDesc.label + (firstContactFirstNameDesc.mandatory ? ' (*)' : '')) : (secondContactFirstNameDesc.label + (secondContactFirstNameDesc.mandatory ? ' (*)' : ''))}}
                                         </label>
                                         <div class="uk-form-controls">
                                           <input id="firstName" class="uk-input" type="text" formControlName="firstName"
                                                  [ngClass]="{'uk-form-danger': checkFormArrayValidity('options', i, 'contacts', j, 'firstName')}">
-                                          <i><small>{{j === 0 ? firstContactFirstNameDesc.desc : secondContactLastNameDesc.desc}}</small></i>
+                                          <i><small>{{j === 0 ? firstContactFirstNameDesc.desc : secondContactFirstNameDesc.desc}}</small></i>
                                         </div>
                                         <label class="uk-form-label uk-text-right" for="lastName">
-                                          {{ j === 0 ? (firstContactLastNameDesc.label + (firstContactLastNameDesc.mandatory ? ' (*)' : '')) : (secondContactFirstNameDesc.label + (secondContactFirstNameDesc.mandatory ? ' (*)' : ''))}}
+                                          {{ j === 0 ? (firstContactLastNameDesc.label + (firstContactLastNameDesc.mandatory ? ' (*)' : '')) : (secondContactLastNameDesc.label + (secondContactLastNameDesc.mandatory ? ' (*)' : ''))}}
                                         </label>
                                         <div class="uk-form-controls">
                                           <input id="lastName" class="uk-input" type="text" formControlName="lastName"
                                                  [ngClass]="{'uk-form-danger': checkFormArrayValidity('options', i, 'contacts', j, 'lastName')}">
-                                          <i><small>{{j === 0 ? firstContactLastNameDesc.desc : secondContactFirstNameDesc.desc}}</small></i>
+                                          <i><small>{{j === 0 ? firstContactLastNameDesc.desc : secondContactLastNameDesc.desc}}</small></i>
                                         </div>
                                         <label class="uk-form-label uk-text-right" for="email">
                                           {{ j === 0 ? (firstContactEmailDesc.label + (firstContactEmailDesc.mandatory ? ' (*)' : '')) : (secondContactEmailDesc.label + (secondContactEmailDesc.mandatory ? ' (*)' : ''))}}
@@ -1012,20 +1011,20 @@
                                   </a>
                                 </div>
                                 <label class="uk-form-label uk-text-right" for="{{'firstName ' + i}}">
-                                  {{ i === 0 ? (mainContactFirstNameDesc.label + (mainContactFirstNameDesc.mandatory ? ' (*)' : '')) : (publicContactLastNameDesc.label + (publicContactLastNameDesc.mandatory ? ' (*)' : ''))}}
+                                  {{ i === 0 ? (mainContactFirstNameDesc.label + (mainContactFirstNameDesc.mandatory ? ' (*)' : '')) : (publicContactFirstNameDesc.label + (publicContactFirstNameDesc.mandatory ? ' (*)' : ''))}}
                                 </label>
                                 <div class="uk-form-controls">
                                   <input id="{{'firstName ' + i}}" class="uk-input" type="text" formControlName="firstName"
                                          [ngClass]="{'uk-form-danger': checkFormArrayValidity('contacts', i, 'firstName')}">
-                                  <i><small>{{i === 0 ? mainContactFirstNameDesc.desc : publicContactLastNameDesc.desc}}</small></i>
+                                  <i><small>{{i === 0 ? mainContactFirstNameDesc.desc : publicContactFirstNameDesc.desc}}</small></i>
                                 </div>
                                 <label class="uk-form-label uk-text-right" for="{{'lastName ' + i}}">
-                                  {{ i === 0 ? (mainContactLastNameDesc.label + (mainContactLastNameDesc.mandatory ? ' (*)' : '')) : (publicContactFirstNameDesc.label + (publicContactFirstNameDesc.mandatory ? ' (*)' : ''))}}
+                                  {{ i === 0 ? (mainContactLastNameDesc.label + (mainContactLastNameDesc.mandatory ? ' (*)' : '')) : (publicContactLastNameDesc.label + (publicContactLastNameDesc.mandatory ? ' (*)' : ''))}}
                                 </label>
                                 <div class="uk-form-controls">
                                   <input id="{{'lastName ' + i}}" class="uk-input" type="text" formControlName="lastName"
                                          [ngClass]="{'uk-form-danger': checkFormArrayValidity('contacts', i, 'lastName')}">
-                                  <i><small>{{i === 0 ? mainContactLastNameDesc.desc : publicContactFirstNameDesc.desc}}</small></i>
+                                  <i><small>{{i === 0 ? mainContactLastNameDesc.desc : publicContactLastNameDesc.desc}}</small></i>
                                 </div>
                                 <label class="uk-form-label uk-text-right" for="{{'email ' + i}}">
                                   {{ i === 0 ? (mainContactEmailDesc.label + (mainContactEmailDesc.mandatory ? ' (*)' : '')) : (publicContactEmailDesc.label + (publicContactEmailDesc.mandatory ? ' (*)' : ''))}}
@@ -1216,6 +1215,9 @@
                         </div>
                       </li>
                       <li>
+                        <div class="uk-alert uk-alert-warning">
+                          This set of attributes needs to be filled in only if you have selected "Aggregators & Integrators" as CATEGORY of your Service Provider.
+                        </div>
                         <div class="uk-margin-bottom">
                           <label class="uk-form-label uk-text-right" for="aggregatedServices">
                             {{aggregatedServicesDesc.label + (aggregatedServicesDesc.mandatory ? ' (*)' : '')}}
@@ -1277,7 +1279,7 @@
                           </div>
                         </div>
                       </li>
-                      <li>
+                      <!--<li>
 
                         <form class="uk-form-horizontal uk-margin-small-bottom" [formGroup]="measurementForm">
                           <div formArrayName="measurements">
@@ -1300,7 +1302,7 @@
                                     <select class="uk-select" id="indicatorId"
                                             (change)="onIndicatorSelect($event, i)" formControlName="indicatorId"
                                             [ngClass]="{'uk-form-danger': !measurements.controls[i].get('indicatorId').valid && measurements.controls[i].get('indicatorId').dirty}">
-                                      <option value="" selected>--select indicator--</option>
+                                      <option value="" selected>&#45;&#45;select indicator&#45;&#45;</option>
                                       <ng-container *ngIf="indicators">
                                         <option *ngFor="let indicator of indicators.results"
                                                 title="{{indicator.description}}"
@@ -1320,7 +1322,7 @@
                                         <select id="location" class="uk-select uk-width-5-6 uk-animation-slide-top-small" [formControlName]="locIndex"
                                                 [ngClass]="{'uk-form-danger': !locations(i).get([locIndex]).valid && locations(i).get([locIndex]).dirty}">
                                           <ng-container *ngIf="placesVocabulary">
-                                            <option>--Choose location--</option>
+                                            <option>&#45;&#45;Choose location&#45;&#45;</option>
                                             <option *ngFor="let placeEntry of placesVocabulary" value="{{placeEntry.id}}">
                                               {{placeEntry.name}}
                                             </option>
@@ -1397,8 +1399,8 @@
                             </div>
                           </div>
                         </form>
-<!--                        <pre>{{measurementForm.value | json}}</pre>-->
-                      </li>
+&lt;!&ndash;                        <pre>{{measurementForm.value | json}}</pre>&ndash;&gt;
+                      </li>-->
                     </ul>
 
                     <button type="submit" class="btn btn-primary butn theme block full-width m-b">

@@ -31,7 +31,7 @@ export class ServiceFormComponent implements OnInit {
   errorMessage = '';
   successMessage: string = null;
   weights: string[] = [];
-  tabs: boolean[] = [false, false, false, false, false, false, false, false, false];
+  tabs: boolean[] = [false, false, false, false, false, false, false, false];
   fb: FormBuilder = this.injector.get(FormBuilder);
 
   measurementForm: FormGroup;
