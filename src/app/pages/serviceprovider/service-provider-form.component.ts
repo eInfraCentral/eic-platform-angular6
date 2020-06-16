@@ -49,7 +49,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {URLValidator} from '../../shared/validators/generic.validator';
 import {Vocabulary, VocabularyType, Provider} from '../../domain/eic-model';
 import {ResourceService} from '../../services/resource.service';
-import {environment} from '../../../environments/environment';
 
 declare var UIkit: any;
 
@@ -59,7 +58,6 @@ declare var UIkit: any;
   styleUrls: ['./service-provider-form.component.css']
 })
 export class ServiceProviderFormComponent implements OnInit {
-  projectName = environment.projectName;
   errorMessage = '';
   userInfo = {family_name: '', given_name: '', email: ''};
   newProviderForm: FormGroup;

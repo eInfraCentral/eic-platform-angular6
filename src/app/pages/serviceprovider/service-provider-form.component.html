@@ -11,20 +11,6 @@
           </a>{{disable ? ' ' : edit ? ' Update' : ' Add New'}} Service Provider {{disable ? 'Info' : ''}}
         </h1>
 
-        <!-- FIXME: remove the following project specific block from here. Replace it with admin tool page (TOP HELP CONTENT) or extend component -->
-        <div class="uk-alert uk-alert-primary" *ngIf="projectName === 'CatRIS'">
-          For questions related to the information that needs to be filled in and suggestions on the portal, please contact us in
-          <a href="mailto:support@catris.eu">support@catris.eu</a>
-          <br>
-          For technical issues and questions, please contact us in <a href="mailto:tech-support@catris.eu">tech-support@catris.eu</a>
-          <br>
-          For instructions on onboarding a Service Providing Organization from MERIL database, click <a href="https://www.portal.catris.eu/assets/files/MERIL%20SP%20Registration%20Instructions%20-%20detailed.pdf">here</a>
-          <br>
-          For instructions on onboarding a new Service Providing Organization, click <a href="https://www.portal.catris.eu/assets/files/SP%20Registration%20Instructions%20-%20detailed.pdf">here</a>
-          <br>
-          An empty Service Provider application form template with all required fields, that can be used for offline reference, can be downloaded <a target="_blank" href="https://www.portal.catris.eu/assets/files/providerForm.pdf">here</a>
-        </div>
-
         <!-- TOP HELP CONTENT -->
         <app-help-content #topHelperContent [position]="'top'"
                           [ngClass]="topHelperContent.isPresent()?'uk-margin-medium-top uk-margin-medium-bottom':'clear-style'">
