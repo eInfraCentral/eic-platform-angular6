@@ -238,11 +238,15 @@ export class ServiceProviderFormComponent implements OnInit {
     } else {
       method = this.edit ? 'updateServiceProvider' : 'createNewServiceProvider';
     }
+
+    this.getFieldAsFormArray('categories').controls = [];
+
     for (const category of this.domainArray.controls) {
       if (category.get('category').value) {
         this.getFieldAsFormArray('categories').push(this.fb.control(category.get('category').value));
       }
     }
+
     if (tempSave) {
       this.showLoader = true;
       window.scrollTo(0, 0);
@@ -264,7 +268,6 @@ export class ServiceProviderFormComponent implements OnInit {
     } else if (this.newProviderForm.valid) {
       this.showLoader = true;
       window.scrollTo(0, 0);
-      this.getFieldAsFormArray('categories').controls = [];
 
       this.serviceProviderService[method](this.newProviderForm.value).subscribe(
         res => {},
